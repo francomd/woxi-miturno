@@ -1,24 +1,18 @@
 import React from "react";
 // import { useState } from "react";
 
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
-import { Home } from "./views/Home";
-import { Example } from "./views/Example";
+import { Portal } from "./views/Portal";
+import { Ticket } from "./views/Ticket";
 
-export const Routes = ({ history }) => {
+export const Routes = () => {
   return (
-    <Router history={history}>
-      <Link to="/">
-        <span>Home</span>
-      </Link>
-      <Link to="/example">
-        <span>Example</span>
-      </Link>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/example" component={Example} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route exact path="/" component={Portal} />
+      <Route exact path="/turno">
+        <Ticket />
+      </Route>
+    </Switch>
   );
 };
