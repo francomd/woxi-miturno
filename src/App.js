@@ -11,18 +11,18 @@ export const App = () => {
 
   return (
     <>
-      <Navbar bg="white" className="px-0 d-flex justify-content-between">
+      <Navbar bg="white" className="d-flex justify-content-between">
         <img
           src={require("./assets/img/menu.svg")}
           alt="Menu"
           onClick={() => toggleDrawer(!openDrawer)}
         />
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" className="mr-0">
           <img
             alt="Woxi Logo"
             src={require("./assets/img/woxi-logo.svg")}
             width="66"
-            className="mr-0 d-inline-block align-top"
+            className="d-inline-block align-center"
           />
         </Navbar.Brand>
       </Navbar>

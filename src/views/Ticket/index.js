@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
+import { Button, Form } from "react-bootstrap";
 
 export const Ticket = () => {
   let stepper;
@@ -13,6 +14,7 @@ export const Ticket = () => {
             <h4>Empresa: {query.empresa}</h4>
             <br />
             <h5>Sucursal: {query.sucursal}</h5>
+            <Button>Generar turno</Button>
           </>
         ))
       : (stepper = (
@@ -47,11 +49,21 @@ const SelectCompany = () => {
   };
 
   return (
-    <select value={company} onChange={e => changeCompany(e)}>
-      <option value="A">A</option>
-      <option value="B">B</option>
-      <option value="C">C</option>
-    </select>
+    <Form>
+      <Form.Control
+        as="select"
+        value="0"
+        onChange={e => changeCompany(e)}
+        custom
+      >
+        <option disabled value="0">
+          Select...
+        </option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Form.Control>
+    </Form>
   );
 };
 
@@ -66,10 +78,20 @@ const SelectBranch = ({ company }) => {
   };
 
   return (
-    <select value={branch} onChange={e => changeBranch(e)}>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
+    <Form>
+      <Form.Control
+        as="select"
+        value="0"
+        onChange={e => changeBranch(e)}
+        custom
+      >
+        <option disabled value="0">
+          Select...
+        </option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </Form.Control>
+    </Form>
   );
 };
