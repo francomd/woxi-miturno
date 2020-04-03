@@ -10,7 +10,7 @@ module.exports = merge(common, {
     contentBase: "./dist"
   },
   entry: {
-    app: "./src/server.js"
+    app: "./src/index.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
