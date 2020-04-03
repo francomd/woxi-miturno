@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 
 import { Routes } from "./Routes";
@@ -25,17 +25,15 @@ export const App = () => {
           />
         </Navbar.Brand>
       </Navbar>
-      <Router>
-        <Drawer open={openDrawer} onToggle={() => toggleDrawer(!openDrawer)}>
-          <Link to="/">
-            <span>Portal</span>
-          </Link>
-          <Link to="/miturno">
-            <span>Mi turno</span>
-          </Link>
-        </Drawer>
-        <Routes />
-      </Router>
+      <Drawer open={openDrawer} onToggle={() => toggleDrawer(!openDrawer)}>
+        <Link to="/">
+          <span>Portal</span>
+        </Link>
+        <Link to="/miturno">
+          <span>Mi turno</span>
+        </Link>
+      </Drawer>
+      <Routes />
     </>
   );
 };

@@ -5,5 +5,13 @@ module.exports = merge(common, {
   devtool: "inline-source-map",
   devServer: {
     historyApiFallback: true
+  },
+  entry: {
+    app: "./src/index.js"
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "app.bundle.js",
+    publicPath: "/"
   }
 });

@@ -8,6 +8,14 @@ module.exports = merge(common, {
   devServer: {
     contentBase: "./dist"
   },
+  entry: {
+    app: "./src/server.js"
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "app.bundle.js",
+    publicPath: "/"
+  },
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
   }
