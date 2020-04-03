@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { History } from "../../History";
 import queryString from "query-string";
 import { Button, Form } from "react-bootstrap";
+import { useEffect } from "react";
 
-export const Ticket = () => {
+export const Ticket = props => {
   let stepper;
-  const query = queryString.parse(location.search);
+  // replace for query of react router
+  const qs = queryString.parse(location.search);
+  const [query, setQuery] = useState("");
 
   query && query.empresa
     ? query.sucursal
@@ -30,6 +33,10 @@ export const Ticket = () => {
         </>
       ));
 
+  useEffect(() => {
+    setQuery(qs);
+  }, [props.location]);
+
   return (
     <>
       <h1>Sacar turno</h1>
@@ -40,12 +47,11 @@ export const Ticket = () => {
 
 const SelectCompany = () => {
   const [company, setCompany] = useState("A");
-  let history = useHistory();
 
   const changeCompany = event => {
     let currentCompany = event.target.value;
     setCompany(currentCompany);
-    history.push(`/turno?empresa=${currentCompany}`);
+    History.push(`/turno?empresa=${currentCompany}`);
   };
 
   return (
@@ -69,12 +75,11 @@ const SelectCompany = () => {
 
 const SelectBranch = ({ company }) => {
   const [branch, setBranch] = useState(1);
-  let history = useHistory();
 
   const changeBranch = event => {
     let currentBranch = event.target.value;
     setBranch(currentBranch);
-    history.push(`/turno?empresa=${company}&sucursal=${currentBranch}`);
+    History.push(`/turno?empresa=${company}&sucursal=${currentBranch}`);
   };
 
   return (

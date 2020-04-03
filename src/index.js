@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { App } from "./App";
-import "./assets/scss/theming.scss";
+import { History } from "./History";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={History}>
     <App />
-  </BrowserRouter>,
+  </Router>,
   document.getElementById("app")
 );

@@ -12,9 +12,7 @@ export const Routes = () => {
     <Container>
       <Switch>
         <Route exact path="/" component={Portal} />
-        <Route exact path="/turno">
-          <Ticket />
-        </Route>
+        <Route exact path="/turno" component={Ticket}></Route>
       </Switch>
     </Container>
   );
