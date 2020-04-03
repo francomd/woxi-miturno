@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Router, Link, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 
 import { Routes } from "./Routes";
@@ -7,7 +7,6 @@ import { Drawer } from "./components/Drawer";
 
 export const App = () => {
   const [openDrawer, toggleDrawer] = useState(false);
-  let history = useHistory();
 
   return (
     <>
@@ -26,7 +25,7 @@ export const App = () => {
           />
         </Navbar.Brand>
       </Navbar>
-      <Router history={history}>
+      <Router>
         <Drawer open={openDrawer} onToggle={() => toggleDrawer(!openDrawer)}>
           <Link to="/">
             <span>Portal</span>
