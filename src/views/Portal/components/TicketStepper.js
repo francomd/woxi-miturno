@@ -3,17 +3,21 @@ import { SelectCompany } from "./SelectCompany";
 import { SelectBranch } from "./SelectBranch";
 import { SelectReason } from "./SelectReason";
 import { History } from "../../../History";
+import { HeaderMessage } from "../../../components/HeaderMessage";
+import { welcomeMsg, branchMsg, reasonMsg } from "./Messages";
 
 export const TicketStepper = ({ query }) => {
-  const selectCompany = value => {
+  let user = { name: "Vico" }; // TODO Fetch user name
+
+  const selectCompany = (value) => {
     History.push(`/?empresa=${value}`);
   };
 
-  const selectBranch = value => {
+  const selectBranch = (value) => {
     History.push(`/?empresa=${query.empresa}&sucursal=${value}`);
   };
 
-  const selectReason = value => {
+  const selectReason = (value) => {
     History.push(
       `/?empresa=${query.empresa}&sucursal=${query.sucursal}&motivo=${value}`
     );
@@ -23,7 +27,7 @@ export const TicketStepper = ({ query }) => {
     let ticket = {
       company: query.empresa,
       branch: query.sucursal,
-      reason: query.motivo
+      reason: query.motivo,
     };
 
     const loggedIn = JSON.parse(localStorage.getItem("user"));
@@ -41,24 +45,24 @@ export const TicketStepper = ({ query }) => {
   return query && query.empresa ? (
     query.sucursal ? (
       <>
-        <h4>Empresa: {query.empresa}</h4>
-        <h5>Sucursal: {query.sucursal}</h5>
-        <br />
+        <HeaderMessage
+          data={reasonMsg(query.empresa, query.sucursal)}
+        ></HeaderMessage>
         <SelectReason
-          onChange={value => selectReason(value)}
+          onChange={(value) => selectReason(value)}
           onClick={() => generateTicket()}
         />
       </>
     ) : (
       <>
-        <h4>Empresa: {query.empresa}</h4>
-        <br />
-        <SelectBranch onChange={value => selectBranch(value)} />
+        <HeaderMessage data={branchMsg(query.empresa)}></HeaderMessage>
+        <SelectBranch onChange={(value) => selectBranch(value)} />
       </>
     )
   ) : (
     <>
-      <SelectCompany onChange={value => selectCompany(value)} />
+      <HeaderMessage data={welcomeMsg(user.name)}></HeaderMessage>
+      <SelectCompany onChange={(value) => selectCompany(value)} />
     </>
   );
 };

@@ -1,9 +1,24 @@
 /* The following block can be included in a custom.scss */
 
 /* make the customizations */
-$theme-colors: (
-  "primary": #6b40e0
-);
+$theme-colors: ("primary": #6b40e0);
+
+@import "AvenirLTStd-font-face.scss";
+
+
+$font-family-sans-serif: "Avenir LT Std",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+"Noto Sans",
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+"Noto Color Emoji";
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";

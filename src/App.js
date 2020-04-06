@@ -25,7 +25,7 @@ export const App = () => {
           alt="Menu"
           onClick={() => toggleDrawer(!openDrawer)}
         />
-        <Navbar.Brand href="#home" className="mr-0">
+        <Navbar.Brand href="https://woxi.digital/" className="mr-0">
           <img
             alt="Woxi Logo"
             src={require("./assets/img/woxi-logo.svg")}
