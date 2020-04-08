@@ -1,3 +1,4 @@
+var path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -6,12 +7,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "src/index.html"
+      template: "src/index.html",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
+      chunkFilename: "[id].css",
+    }),
   ],
   module: {
     rules: [
@@ -21,21 +22,25 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
-          }
-        }
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
       },
       {
         test: /\.s(a|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|otf|svg|mp3)$/,
-        loader: "url-loader?limit=100000"
-      }
-    ]
+        loader: "url-loader?limit=100000",
+      },
+    ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".scss", ".sass"]
-  }
+    extensions: [".js", ".jsx", ".scss", ".sass"],
+    alias: {
+      Assets: path.resolve(__dirname, "src/assets/"),
+      Commons: path.resolve(__dirname, "src/commons/"),
+    },
+  },
 };

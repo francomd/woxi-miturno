@@ -4,7 +4,7 @@ import { Navbar } from "react-bootstrap";
 import { History } from "./History";
 
 import { Routes } from "./Routes";
-import { Drawer } from "./components/Drawer";
+import { Drawer } from "Commons/Drawer";
 
 export const App = () => {
   const [openDrawer, toggleDrawer] = useState(false);

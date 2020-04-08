@@ -21,11 +21,12 @@ export const Footer = styled.div`
 
 export const Header = styled.h6`
   font-size: 20px;
+  margin: 0;
 `;
 
 export const Subheader = styled.h1`
   font-size: 14px;
-  margin: 0;
+  margin: 0.5rem 0 0 0;
 `;
 
 export const Description = styled.h4`
